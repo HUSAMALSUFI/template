@@ -1,0 +1,54 @@
+<div class="content container-fluid">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Add Demo</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="'/demo/demo-list'">Demo</a></li>
+            <li class="breadcrumb-item active">Add Demo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card comman-shadow">
+        <div class="card-body">
+          <form [formGroup]="form" novalidate>
+            <div class="row">
+              <div class="col-12">
+                <h5 class="form-title student-info">Student Information <span><a href="javascript:;"><i
+                        class="feather-more-vertical"></i></a></span></h5>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>ID <span class="login-danger">*</span></label>
+                  <input type="text" class="form-control"
+                    [class.invalid]="form.get('id')?.invalid && form.get('id')?.touched"
+                    formControlName="id">
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group local-forms">
+                  <label>Title <span class="star-red">*</span></label>
+                  <textarea class="form-control" formControlName="title"></textarea>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="student-submit">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

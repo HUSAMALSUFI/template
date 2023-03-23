@@ -1,0 +1,24 @@
+<div class="main-wrapper " [ngClass]="{
+    'expand-menu':
+      expandMenu == true && miniSidebar == true ,
+    'mini-sidebar': miniSidebar == true,
+    'slide-nav': mobileSidebar == true 
+  }">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <div class="page-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="sidebar-overlay" (click)="toggleMobileSideBar()" [ngClass]="{
+  'opened': mobileSidebar == true 
+}"></div>
+  <!-- Footer -->
+  <footer>
+    <p>©Copyright <a style="cursor: pointer;
+      " href="#" target="_blank">DareSoft</a> All rights
+      reserved
+      {{currentYear}}
+    </p>
+  </footer>
+  <!-- /Footer -->
+</div>

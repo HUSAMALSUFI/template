@@ -1,0 +1,60 @@
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-sub-header">
+                    <h3 class="page-title">Demo</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item" [routerLink]="'/demo/demo-list'"><a>Demo</a></li>
+                        <li class="breadcrumb-item active">All Demo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table comman-shadow">
+                <div class="card-body">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                    <button class="dropdown-item ltr" (click)="useLanguage('en')"><i
+                                            class="fi fi-lr me-2"></i>English</button>
+                                    <button class="dropdown-item rtl" (click)="useLanguage('ar')"><i
+                                            class="flag flag-sa me-2"></i>Arabic</button>
+                                <h3 class="page-title">{{ 'DemoListComponent.heading' | translate }}</h3>
+                            </div>
+                            <div class="col-auto text-end float-end ms-auto download-grp">
+                                <a (click)="isGrid=false" class="btn btn-outline-gray me-2 active"><i
+                                        class="feather icon-list"></i></a>
+                                <a (click)="isGrid=true" class="btn btn-outline-gray me-2"><i
+                                        class="feather icon-grid"></i></a>
+                                <a href="javascript:void(0);" class="btn btn-outline-primary me-2"><i
+                                        class="fas fa-download"></i> Download</a>
+                                <a [routerLink]="'/demo/demo-add'" class="btn btn-primary"><i
+                                        class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Page Header -->
+
+                    <!-- Data Table-->
+                    <ng-container *ngIf="isGrid == false">
+                        <app-data-table [columns]="columns" [APIRoute]="APIRouteTable" (Edit)="onEdit($event)"
+                            (Delete)="onDelete($event)"></app-data-table>
+                    </ng-container>
+                    <!-- /Data Table-->
+
+                    <!-- Grid Table-->
+                    <ng-container *ngIf="isGrid == true">
+                        <app-grid-table [columns]="columns" [APIRoute]="APIRouteGrid" (Edit)="onEdit($event)"
+                            (Delete)="onDelete($event)"></app-grid-table>
+                    </ng-container>
+                    <!-- /Grid Table-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

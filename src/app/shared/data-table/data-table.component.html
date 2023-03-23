@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-table comman-shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card card-table">
+                            <div class="table-responsive">
+                                <table datatable class="table table-hover table-center table-responsive mb-0"
+                                    [dtTrigger]="dtTrigger" style="white-space: break-spaces">
+                                    <thead>
+                                        <tr>
+                                            <th [ngStyle]="column.style" *ngFor="let column of columns">
+                                                <ng-container *ngIf="column.type == 'Check'">
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something" />
+                                                    </div>
+                                                </ng-container>
+                                                <ng-container *ngIf="column.type != 'Check'">
+                                                    {{ column.label }}</ng-container>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of data">
+                                            <td *ngFor="let column of columns" [ngSwitch]="column.type"
+                                                [ngStyle]="column.style">
+                                                <ng-container *ngSwitchCase="'Check'">
+                                                    <div class="form-check check-tables">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            value="something" />
+                                                    </div>
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'Id'">
+                                                    {{ row[column.name] }}
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'Text'">
+                                                    {{ row[column.name] }}
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'Image'">
+                                                    <a class="avatar avatar-sm me-2"><img
+                                                            class="avatar-img rounded-circle"
+                                                            src="{{ row[column.name] }}" alt="User Image" /></a>
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'Actions'">
+                                                    <div class="actions">
+
+                                                        <ng-container *ngFor="let x of column.actions">
+
+                                                            <ng-container *ngIf="x['name']=='edit'">
+                                                                <a class="btn btn-sm bg-success-light me-2"
+                                                                    type="button" value="Edit" (click)="onEdit(row)">
+                                                                    <i class="feather icon-edit"></i>
+                                                                </a>
+                                                            </ng-container>
+
+                                                            <ng-container *ngIf="x['name']=='delete'">
+                                                                <a class="btn btn-sm bg-danger-light me-2" type="button"
+                                                                    value="Delete" (click)="onDelete(row.id)">
+                                                                    <i class="feather icon-trash"></i>
+                                                                </a>
+
+                                                            </ng-container>
+                                                            <ng-container *ngIf="x['name']=='audit'">
+                                                                <a class="btn btn-sm bg-success-light me-2"
+                                                                    type="button" value="Show" (click)="onShow(row)">
+                                                                    <i class="feather icon-eye"></i>
+                                                                </a>
+
+                                                            </ng-container>
+                                                        </ng-container>
+
+
+
+
+                                                    </div>
+
+                                                </ng-container>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
